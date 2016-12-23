@@ -2,6 +2,10 @@ package it.esteco.html;
 
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
+
 import static org.junit.Assert.assertEquals;
 
 public class ConvertUnicodeTextToHtml {
@@ -24,5 +28,14 @@ public class ConvertUnicodeTextToHtml {
         String html = textConverter.convertToHtml();
 
         assertEquals("a<br />b &amp; c<br />", html);
+    }
+
+    @Test
+    public void convertUnicodeEmptyText() throws Exception {
+        UnicodeToHtmlTextConverter unicodeToHtmlTextConverter = new UnicodeToHtmlTextConverter(new StringReader(""));
+
+        String html = unicodeToHtmlTextConverter.convertToHtml();
+
+        assertEquals("", html);
     }
 }
