@@ -3,6 +3,7 @@ package it.esteco.html;
 import org.junit.Test;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -13,7 +14,7 @@ public class ConvertUnicodeTextToHtml {
     @Test
     public void convertEmptyUnicodeFile() throws Exception {
         String path = getClass().getClassLoader().getResource("empty.txt").getPath();
-        UnicodeToHtmlTextConverter textConverter = new UnicodeToHtmlTextConverter(path);
+        UnicodeToHtmlTextConverter textConverter = new UnicodeToHtmlTextConverter(new FileReader(path));
 
         String html = textConverter.convertToHtml();
 
@@ -23,7 +24,7 @@ public class ConvertUnicodeTextToHtml {
     @Test
     public void convertUnicodeFileText() throws Exception {
         String path = getClass().getClassLoader().getResource("unicodeText.txt").getPath();
-        UnicodeToHtmlTextConverter textConverter = new UnicodeToHtmlTextConverter(path);
+        UnicodeToHtmlTextConverter textConverter = new UnicodeToHtmlTextConverter(new FileReader(path));
 
         String html = textConverter.convertToHtml();
 
